@@ -1,0 +1,25 @@
+{
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "excludedTypes": "Request"
+      }
+    },
+    "logLevel": {
+      "MassTransit": "Debug",
+      "Sample.AzureFunctions.ServiceBus": "Information"
+    }
+  },
+  "extensions": {
+    "serviceBus": {
+      "prefetchCount": 32,
+      "messageHandlerOptions": {
+        "autoComplete": false,
+        "maxConcurrentCalls": 32,
+        "maxAutoRenewDuration": "00:30:00"
+      }
+    }
+  }
+}
