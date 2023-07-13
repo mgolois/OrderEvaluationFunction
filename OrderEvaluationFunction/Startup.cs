@@ -15,7 +15,7 @@ namespace OrderEvaluationFunction
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services
-                .AddMassTransit(c=>
+                .AddMassTransit(c =>
                 {
                     c.AddConsumersFromNamespaceContaining<ConsumerNamespace>();
                     c.UsingInMemory((context, cfg) =>
@@ -26,17 +26,15 @@ namespace OrderEvaluationFunction
                 .AddSingleton<IAsyncBusHandle, AsyncBusHandle>()
                 .RemoveMassTransitHostedService();
 
-
-            //After function
-                /*.AddMassTransitForAzureFunctions(cfg =>
-                    {
-                        cfg.AddConsumersFromNamespaceContaining<ConsumerNamespace>();
-                    },
-                    "AzureWebJobsServiceBus",
-                    (ctx, cfg) =>
-                    {
-                        cfg.ConfigureEndpoints(ctx);
-                    });*/
+            //.AddMassTransitForAzureFunctions(cfg =>
+            //    {
+            //        cfg.AddConsumersFromNamespaceContaining<ConsumerNamespace>();
+            //    },
+            //    "AzureWebJobsServiceBus",
+            //    (ctx, cfg) =>
+            //    {
+            //        cfg.ConfigureEndpoints(ctx);
+            //    });
 
         }
     }

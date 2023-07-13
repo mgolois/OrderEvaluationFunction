@@ -17,9 +17,10 @@ namespace OrderEvaluationFunction.Consumers
            _logger = logger;
         }
         public async Task Consume(ConsumeContext<OrderExpired> context)
-        {
+         {
+            await Task.Delay(30000);
             //TODO Email the user that the order has expired
-            _logger.LogInformation($"You order#{context.Message.OrderId} expired on {context.Message.DateTime}");
+            LogContext.Info?.Log ($"You order#{context.Message.OrderId} expired on {context.Message.DateTime}");
             await Task.CompletedTask;
         }
     }
